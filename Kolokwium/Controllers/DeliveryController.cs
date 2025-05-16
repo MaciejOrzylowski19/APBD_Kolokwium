@@ -1,4 +1,5 @@
-﻿using Kolokwium.Services;
+﻿using Kolokwium.Models;
+using Kolokwium.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Kolokwium.Controllers;
@@ -11,9 +12,11 @@ public class DeliveryController : ControllerBase
 {
 
     private IDeliveryService _deliveryService;
+    private IAddDeliveryService _addDeliveryService;
 
-    public DeliveryController(IDeliveryService service)
+    public DeliveryController(IDeliveryService service, IAddDeliveryService addDeliveryService)
     {
+        _addDeliveryService = addDeliveryService;
         _deliveryService = service;
     }
 
@@ -24,13 +27,24 @@ public class DeliveryController : ControllerBase
 
         try
         {
-            return Ok(_deliveryService.GetDelivery(id));
+            return Ok(await _deliveryService.GetDelivery(id));
         }
         catch (Exception e)
         {
             return BadRequest();
         }
     }
+
+    [HttpPost]
+    public async Task<IActionResult> PostDelivery([FromBody] PostDeliveryDTO deliveryDto)
+    {
+
+        await _addDeliveryService.AddDelivery(deliveryDto);
+        
+        return Ok();
+
+    }
+    
     
     
 }

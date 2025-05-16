@@ -37,6 +37,19 @@ public class DeliveryService : IDeliveryService
             return target;
 
         }
+    }
 
+    public async Task<int> AddDelivery()
+    {
+
+        
+        
+
+        
+        
+
+
+
+        return 0;
     }
 }
