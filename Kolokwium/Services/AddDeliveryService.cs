@@ -1,6 +1,11 @@
-﻿namespace Kolokwium.Services;
+﻿using Kolokwium.Models;
 
-public class AddDeliveryService
+namespace Kolokwium.Services;
+
+public class AddDeliveryService : IAddDeliveryService
 {
-    
+    public Task<int> AddDelivery(PostDeliveryDTO deliveryDto)
+    {
+        throw new NotImplementedException();
+    }
 }

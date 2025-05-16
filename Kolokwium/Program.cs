@@ -8,6 +8,7 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<IDeliveryService, DeliveryService>();
+builder.Services.AddScoped<IAddDeliveryService, AddDeliveryService>();
 
 var app = builder.Build();
 
